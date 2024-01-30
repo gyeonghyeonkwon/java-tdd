@@ -13,6 +13,8 @@ public class App {
         this.scanner = scanner;
     }
 
+
+
     public void run() {
         System.out.println("==명언 앱==");
 
@@ -21,25 +23,21 @@ public class App {
 
         while (true) {
             final String cmd = scanner.nextLine().trim();
+            final String [] cmdBits = cmd.split("\\?" , 2) ;
+            final String action = cmdBits[0].trim();
+            final String queryString = cmdBits.length == 2 ? cmdBits[1].trim() : "";
 
-            switch (cmd) {
+            switch (action) {
 
-                case "삭제?id=2" -> {
+                case "삭제" -> {
+                final String idStr = queryString.replace("id=","");
+                long id = Long.parseLong(idStr);
 
                     quotations
-                            .removeIf(quotation -> quotation.getId() == 2); //id 값이 2번이면 삭제
+                            .removeIf(quotation -> quotation.getId() == id); //id 값이 2번이면 삭제
 
                     System.out.println("2번 명언이 삭제되었습니다.");
                 }
-
-
-               case "삭제?id=1" -> {
-
-                   quotations
-                           .removeIf(quotation -> quotation.getId() == 1); //id 값이 1번이면 삭제
-
-                   System.out.println("1번 명언이 삭제되었습니다.");
-               }
 
 
                 case "등록" -> {
