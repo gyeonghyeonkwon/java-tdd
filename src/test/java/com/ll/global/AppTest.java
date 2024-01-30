@@ -61,4 +61,33 @@ public class AppTest {
                         .contains("1번 명언이 등록되었습니다.");
     }
 
+    @Test
+    @DisplayName("등록할 때 마다 번호 증가 ")
+    void t4() {
+        final String out = run("""
+                등록
+                현재를 사랑하라.
+                작자미상
+                종료""");
+
+        assertThat(out).contains("명언 :")
+                .contains("작가 :")
+                .contains("1번 명언이 등록되었습니다.")
+                .doesNotContain("2번 명언이 등록되었습니다"); //1 번 등록 시  2번 명언이 등록되었습니다 가 출력되면안됨
+
+        final String out2 = run(""" 
+                등록
+                현재를 사랑하라.
+                작자미상
+                종료"""); //2번 등록 시 3번 명언이 등록 되었습니다 가 출력되면 안됨
+
+        assertThat(out).contains("명언 :")
+                .contains("작가 :")
+                .contains("1번 명언이 등록되었습니다.")
+                .contains("2번 명언이 등록되었습니다")
+                .doesNotContain("3번 명언이 등록되었습니다");  //3번 등록시
+
+    }
+
+
 }
