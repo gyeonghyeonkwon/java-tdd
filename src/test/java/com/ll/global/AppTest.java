@@ -79,9 +79,12 @@ public class AppTest {
                 등록
                 현재를 사랑하라.
                 작자미상
+                등록
+                현재를 사랑하라.
+                작자미상
                 종료"""); //2번 등록 시 3번 명언이 등록 되었습니다 가 출력되면 안됨
 
-        assertThat(out).contains("명언 :")
+        assertThat(out2).contains("명언 :")
                 .contains("작가 :")
                 .contains("1번 명언이 등록되었습니다.")
                 .contains("2번 명언이 등록되었습니다")
