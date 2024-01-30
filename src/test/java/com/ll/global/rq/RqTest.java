@@ -30,7 +30,7 @@ public class RqTest {
     @DisplayName("삭제?이름=Alice")
     void t3() {
 
-        final Rq rq = new Rq ("삭제?이름=Paul");
+        final Rq rq = new Rq ("삭제?이름=Alice");
 
         assertThat(rq.getParameter("이름")).isEqualTo("Alice");
 
