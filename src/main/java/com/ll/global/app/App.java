@@ -24,6 +24,15 @@ public class App {
 
             switch (cmd) {
 
+                case "삭제?id=2" -> {
+
+                    quotations
+                            .removeIf(quotation -> quotation.getId() == 2); //id 값이 2번이면 삭제
+
+                    System.out.println("2번 명언이 삭제되었습니다.");
+                }
+
+
                case "삭제?id=1" -> {
 
                    quotations
