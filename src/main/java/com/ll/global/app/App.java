@@ -18,7 +18,7 @@ public class App {
 
        while(true) {
 
-           final String cmd = scanner.nextLine().trim();
+             final String cmd = scanner.nextLine().trim();
 
            if(cmd.equals("등록") ) {
                System.out.println("명언 : ");

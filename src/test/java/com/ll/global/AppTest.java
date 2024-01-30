@@ -15,7 +15,7 @@ public class AppTest {
     private static String run(final String cmd) {
 
 
-        final Scanner scanner = TestUtil.genScanner(cmd.stripIndent().trim());
+        final Scanner scanner = TestUtil.genScanner(cmd.stripIndent().trim() + "\n종료");
 
 
         final  ByteArrayOutputStream byteArrayOutputStream = TestUtil.setOutToByteArray();
@@ -32,8 +32,7 @@ public class AppTest {
     @Test
     @DisplayName("프로그램 시작 시 ==명언앱==  출력")
     void t1() {
-        final String out = run("""
-                종료""");
+        final String out = run("");
 
         assertThat(out).contains("==명언앱==");
     }
@@ -41,8 +40,7 @@ public class AppTest {
     @Test
     @DisplayName("종료")
     void t2() {
-        final  String out = run("""
-                종료""");
+        final  String out = run("");
 
 
     }
