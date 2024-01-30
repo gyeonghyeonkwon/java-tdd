@@ -35,4 +35,9 @@ public class Rq {
 
         return params.getOrDefault(paramName , defaultValue);
     }
+
+    public long getParameterAsLong(String paramName, long defaultValue) {
+
+        return defaultValue;
+    }
 }
