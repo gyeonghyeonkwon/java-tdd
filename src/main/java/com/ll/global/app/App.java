@@ -1,6 +1,7 @@
 package com.ll.global.app;
 
 import com.ll.domain.quotaion.quotation.entity.Quotation;
+import com.ll.global.rq.Rq;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +17,7 @@ public class App {
 
 
     public void run() {
+
         System.out.println("==명언 앱==");
 
         final List<Quotation> quotations = new ArrayList<>();
@@ -23,15 +25,15 @@ public class App {
 
         while (true) {
             final String cmd = scanner.nextLine().trim();
-            final String [] cmdBits = cmd.split("\\?" , 2) ;
-            final String action = cmdBits[0].trim();
-            final String queryString = cmdBits.length == 2 ? cmdBits[1].trim() : "";
+
+          final  Rq rq = new Rq(cmd);
+          final String action = rq.getAction();
 
             switch (action) {
 
                 case "삭제" -> {
-                final String idStr = queryString.replace("id=","");
-                long id = Long.parseLong(idStr);
+
+                final long id = rq.getParameterAsLong("id" , 0);
 
                     quotations
                             .removeIf(quotation -> quotation.getId() == id); //id 값이 2번이면 삭제
@@ -42,13 +44,17 @@ public class App {
 
                 case "등록" -> {
                     System.out.print("명언 : ");
+
                     final String content = scanner.nextLine().trim();
+
                     System.out.print("작가 : ");
+
                     final String authorName = scanner.nextLine().trim();
 
                     final long id = ++lastQuotationId;
 
                     Quotation quotation = new Quotation(id, authorName, content);
+
                     quotations.add(quotation);
 
                     System.out.println("%d번 명언이 등록되었습니다.".formatted(id));

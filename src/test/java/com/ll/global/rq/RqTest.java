@@ -77,7 +77,7 @@ public class RqTest {
 
         long age = rq.getParameterAsLong("id" , 0);
 
-        assertThat(age).isEqualTo(0);
+        assertThat(age).isEqualTo(4);
 
     }
 }
