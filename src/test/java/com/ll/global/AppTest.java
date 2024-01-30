@@ -12,13 +12,13 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class AppTest {
 
-    private  String run(final String cmd) {
+    private String run(final String cmd) {
 
 
         final Scanner scanner = TestUtil.genScanner(cmd.stripIndent().trim() + "\n종료");
 
 
-        final  ByteArrayOutputStream byteArrayOutputStream = TestUtil.setOutToByteArray();
+        final ByteArrayOutputStream byteArrayOutputStream = TestUtil.setOutToByteArray();
 
         new App(scanner).run();
 
@@ -41,7 +41,7 @@ public class AppTest {
     @Test
     @DisplayName("종료")
     void t2() {
-        final  String out = run("");
+        final String out = run("");
 
 
     }
@@ -56,8 +56,8 @@ public class AppTest {
                 """);
 
         assertThat(out).contains("명언 :")
-                         .contains("작가 :")
-                        .contains("1번 명언이 등록되었습니다.");
+                .contains("작가 :")
+                .contains("1번 명언이 등록되었습니다.");
     }
 
     @Test
