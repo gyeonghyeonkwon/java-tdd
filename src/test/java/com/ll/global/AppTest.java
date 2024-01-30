@@ -149,6 +149,27 @@ public class AppTest {
                 등록
                 과거에 집착하지 마라.
                 홍길동
+                삭제?id=1
+                목록
+                """);
+
+        assertThat(out)
+                .contains("번호 / 작가 / 명언")
+                .contains("----------------------")
+                .contains("2 / 홍길동 / 과거에 집착하지 마라.")
+                .doesNotContain("1 / 작자미상 / 현재를 사랑하라.");
+    }
+
+    @Test
+    @DisplayName("삭제 2")
+    void t9() {
+        final String out = run("""
+                등록
+                현재를 사랑하라.
+                작자미상
+                등록
+                과거에 집착하지 마라.
+                홍길동
                 삭제?id=2
                 목록
                 """);
@@ -161,7 +182,7 @@ public class AppTest {
     }
     @Test
     @DisplayName("수정")
-    void t9() {
+    void t10() {
 
         final String out = run(""" 
                 등록
@@ -171,7 +192,7 @@ public class AppTest {
                 과거에 집착하지 마라.
                 홍길동
                 수정?id=2
-                과거에 집착하지 마세요
+                과거에 집착하지 마세요.
                 홍길동님
                 목록
                 """);
