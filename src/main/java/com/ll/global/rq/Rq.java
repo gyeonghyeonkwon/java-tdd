@@ -13,4 +13,9 @@ public class Rq {
     public String getAction() {
         return action;
     }
+
+    public String getParameter(final String paramName) {
+
+        return null;
+    }
 }
