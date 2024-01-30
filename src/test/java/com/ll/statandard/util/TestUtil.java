@@ -6,8 +6,8 @@ import java.util.Scanner;
 public class TestUtil {
 
     // gen == generate 생성하다.
-    public static Scanner genScanner(String input) {
-        InputStream in = new ByteArrayInputStream(input.getBytes());
+    public static Scanner genScanner(final String input) {
+        final InputStream in = new ByteArrayInputStream(input.getBytes());
 
         return new Scanner(in);
     }
