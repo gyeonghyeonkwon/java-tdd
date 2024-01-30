@@ -53,7 +53,7 @@ public class App {
 
                     quotations
                             .stream()
-                            .filter(_quotation -> _quotation.getId() == id)
+                            .filter(quotation -> quotation.getId() == id)
                             .findFirst()
                             .ifPresentOrElse(
                                     quotation -> {
