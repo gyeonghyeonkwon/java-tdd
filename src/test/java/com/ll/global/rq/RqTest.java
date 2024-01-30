@@ -27,11 +27,22 @@ public class RqTest {
     }
 
     @Test
-    @DisplayName("삭제?이름=Alice")
+    @DisplayName("getParameter2")
     void t3() {
 
         final Rq rq = new Rq ("삭제?이름=Alice");
 
+        assertThat(rq.getParameter("이름")).isEqualTo("Alice");
+
+    }
+
+    @Test
+    @DisplayName("getParameter3")
+    void t4() {
+
+        final Rq rq = new Rq ("삭제?id=4&이름=Alice");
+
+        assertThat(rq.getParameter("id")).isEqualTo("4");
         assertThat(rq.getParameter("이름")).isEqualTo("Alice");
 
     }
