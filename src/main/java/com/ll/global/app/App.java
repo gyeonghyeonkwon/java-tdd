@@ -23,6 +23,16 @@ public class App {
             final String cmd = scanner.nextLine().trim();
 
             switch (cmd) {
+
+               case "삭제?id=1" -> {
+
+                   quotations
+                           .removeIf(quotation -> quotation.getId() == 1); //id 값이 1번이면 삭제
+
+                   System.out.println("1번 명언이 삭제되었습니다.");
+               }
+
+
                 case "등록" -> {
                     System.out.print("명언 : ");
                     final String content = scanner.nextLine().trim();

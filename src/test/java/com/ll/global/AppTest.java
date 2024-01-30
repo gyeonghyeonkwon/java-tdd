@@ -156,6 +156,7 @@ public class AppTest {
         assertThat(out)
                 .contains("번호 / 작가 / 명언")
                 .contains("----------------------")
-                .doesNotContain("2 / 홍길동 / 과거에 집착하지 마라.");
+                .contains("2 / 홍길동 / 과거에 집착하지 마라.")
+                .doesNotContain("1 / 작자미상 / 현재를 사랑하라.");
     }
 }
