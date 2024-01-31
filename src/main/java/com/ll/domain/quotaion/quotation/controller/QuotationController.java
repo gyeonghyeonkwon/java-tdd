@@ -96,4 +96,15 @@ public class QuotationController {
                         )
                 );
     }
+
+    public void dispatch(Rq rq) {
+
+        switch (rq.getAction()) {
+
+            case "삭제" -> actionRemove(rq);
+            case "수정" -> actionModify(rq);
+            case "목록" -> actionShowList();
+            case "등록" -> actionWrite();
+        }
+    }
 }
