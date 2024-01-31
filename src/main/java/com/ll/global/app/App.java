@@ -37,45 +37,11 @@ public class App {
             switch (action) {
 
                 case "삭제" -> {
-
-                final long id = rq.getParameterAsLong("id" , 0);
-
-                    quotations
-                            .stream()
-                            .filter(quotation -> quotation.getId() == id)
-                            .findFirst()
-                            .ifPresentOrElse(
-                                    quotation -> {
-                                        quotations.remove(quotation);
-                                        System.out.println("%d번 명언이 삭제되었습니다.".formatted(id));
-                                    },
-                                    () -> System.out.println("%d번 명언은 존재하지 않습니다.".formatted(id))
-                            );
+                    actionRemove(rq);
                 }
 
                 case "수정" -> {
-                    final long id = rq.getParameterAsLong("id", 0);
-
-                    quotations
-                            .stream()
-                            .filter(quotation -> quotation.getId() == id)
-                            .findFirst()
-                            .ifPresentOrElse(
-                                    quotation -> {
-                                        System.out.println("명언(기존) : %s".formatted(quotation.getContent()));
-                                        System.out.print("명언 : ");
-                                        final String content = scanner.nextLine().trim();
-                                        System.out.println("작가(기존) : %s".formatted(quotation.getAuthorName()));
-                                        System.out.print("작가 : ");
-                                        final String authorName = scanner.nextLine().trim();
-
-                                        quotation.setContent(content);
-                                        quotation.setAuthorName(authorName);
-
-                                        System.out.println("%d번 명언이 수정되었습니다.".formatted(id));
-                                    },
-                                    () -> System.out.println("%d번 명언은 존재하지 않습니다.".formatted(id))
-                            );
+                    actionModify(rq);
                 }
 
                 case "등록" -> {
@@ -93,6 +59,50 @@ public class App {
 
 
         }
+    }
+
+    private void actionRemove(final Rq rq) {
+
+
+        final long id = rq.getParameterAsLong("id" , 0);
+
+        quotations
+                .stream()
+                .filter(quotation -> quotation.getId() == id)
+                .findFirst()
+                .ifPresentOrElse(
+                        quotation -> {
+                            quotations.remove(quotation);
+                            System.out.println("%d번 명언이 삭제되었습니다.".formatted(id));
+                        },
+                        () -> System.out.println("%d번 명언은 존재하지 않습니다.".formatted(id))
+                );
+    }
+
+    private void actionModify(final Rq rq) {
+
+        final long id = rq.getParameterAsLong("id", 0);
+
+        quotations
+                .stream()
+                .filter(quotation -> quotation.getId() == id)
+                .findFirst()
+                .ifPresentOrElse(
+                        quotation -> {
+                            System.out.println("명언(기존) : %s".formatted(quotation.getContent()));
+                            System.out.print("명언 : ");
+                            final String content = scanner.nextLine().trim();
+                            System.out.println("작가(기존) : %s".formatted(quotation.getAuthorName()));
+                            System.out.print("작가 : ");
+                            final String authorName = scanner.nextLine().trim();
+
+                            quotation.setContent(content);
+                            quotation.setAuthorName(authorName);
+
+                            System.out.println("%d번 명언이 수정되었습니다.".formatted(id));
+                        },
+                        () -> System.out.println("%d번 명언은 존재하지 않습니다.".formatted(id))
+                );
     }
 
     private void actionShowList() {
